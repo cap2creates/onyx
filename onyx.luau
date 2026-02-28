@@ -54,7 +54,7 @@ function updateTabPositions(TabFrame)
 		if v:IsA("TextButton") then
 			v.Position = lastPos
 			
-			lastPos += UDim2.fromScale(0.3,0)
+			lastPos = lastPos + UDim2.fromScale(0.3,0)
 		end
 	end
 end
@@ -140,7 +140,7 @@ function tabClicked(Window, Tab, info, GUI, isReload)
 	local loop = 0
 
 	for i,v in pairs(Tab.Data.Items) do
-		loop += 1
+		loop = loop + 1
 		if Tab.Data.Types[v.Name] == "Button" then
 			task.spawn(function()
 				local ButtonFrame = Instance.new("Frame", GUI.MainFrame.MainSection)
@@ -352,8 +352,8 @@ function lib:UI()
 				Tab.Data.Items[info2.Name] = Toggle
 				Tab.Data.Types[info2.Name] = "Toggle"
 				
-				if info.BaseValue == true then
-					info.Callback(true)
+				if info2.BaseValue == true then
+					info2.Callback(true)
 				end
 				
 				tabClicked(Window, Tab, info, GUI, true)
@@ -511,7 +511,7 @@ function lib:UI()
 				
 				local dots = 0
 				repeat
-					dots += 1
+					dots = dots + 1
 					LoadingLabel.Text = "Loading"..string.rep(".", dots)
 					
 					task.wait(0.5)
@@ -530,7 +530,7 @@ function lib:UI()
 			else
 				local dots = 0
 				for i=1, 9 do
-					dots += 1
+					dots = dots + 1
 					LoadingLabel.Text = "Loading"..string.rep(".", dots)
 
 					task.wait(0.5)

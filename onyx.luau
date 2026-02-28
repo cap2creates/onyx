@@ -636,4 +636,6 @@ function lib:UI()
 	return UI
 end
 
+_G.TempOnyx = lib
+
 return lib

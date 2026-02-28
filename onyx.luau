@@ -262,6 +262,7 @@ function tabClicked(Window, Tab, info, GUI, isReload)
 				UICorner.CornerRadius = UDim.new(1,0)
 
 				v.Connection = Toggle.MouseButton1Click:Connect(function()
+					print(v)
 					v.Value = not v.Value
 
 					if v.Value == true then

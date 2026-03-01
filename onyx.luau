@@ -172,7 +172,7 @@ function tabClicked(Window, Tab, info, GUI, isReload)
 				local ClickLabel = Instance.new("ImageLabel", Button)
 				ClickLabel.BackgroundTransparency = 1
 				ClickLabel.AnchorPoint = Vector2.new(0.5,0.5)
-				ClickLabel.Position = UDim2.fromScale(0.9,0.5)
+				ClickLabel.Position = UDim2.fromScale(0.875,0.5)
 				ClickLabel.Size = UDim2.fromScale(0.65,0.65)
 				ClickLabel.SizeConstraint = Enum.SizeConstraint.RelativeYY
 				ClickLabel.Image = "rbxassetid://12974400533"
@@ -180,11 +180,12 @@ function tabClicked(Window, Tab, info, GUI, isReload)
 
 				local ButtonLabel = Instance.new("TextLabel", Button)
 				ButtonLabel.BackgroundTransparency = 1
-				ButtonLabel.Position = UDim2.fromScale(0.05,0)
-				ButtonLabel.Size = UDim2.fromScale(0.5,1)
+				ButtonLabel.Position = UDim2.fromScale(0.05,0.5)
+				ButtonLabel.Size = UDim2.fromScale(0.75,0.5)
+				ButtonLabel.AnchorPoint = Vector2.new(0, 0.5)
 				ButtonLabel.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.Medium, Enum.FontStyle.Normal)
 				ButtonLabel.Text = v.Text
-				ButtonLabel.TextSize = 16
+				ButtonLabel.TextScaled = true
 				ButtonLabel.TextColor3 = Color3.fromRGB(255,255,255)
 				ButtonLabel.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -220,11 +221,12 @@ function tabClicked(Window, Tab, info, GUI, isReload)
 
 				local Label = Instance.new("TextLabel", Toggle)
 				Label.BackgroundTransparency = 1
-				Label.Position = UDim2.fromScale(0.05,0)
-				Label.Size = UDim2.fromScale(0.5,1)
+				Label.Position = UDim2.fromScale(0.05,0.5)
+				Label.Size = UDim2.fromScale(0.75,0.5)
+				Label.AnchorPoint = Vector2.new(0, 0.5)
 				Label.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.Medium, Enum.FontStyle.Normal)
 				Label.Text = v.Text
-				Label.TextSize = 16
+				Label.TextScaled = true
 				Label.TextColor3 = Color3.fromRGB(255,255,255)
 				Label.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -233,7 +235,7 @@ function tabClicked(Window, Tab, info, GUI, isReload)
 				SwitchFrame.BackgroundColor3 = (v.Value == false and Color3.fromRGB(50,50,50) or Color3.fromRGB(25,100,200))   
 				SwitchFrame.AnchorPoint = Vector2.new(0.5,0.5)
 				SwitchFrame.Name = "Toggle"
-				SwitchFrame.Position = UDim2.fromScale(0.85,0.5)
+				SwitchFrame.Position = UDim2.fromScale(0.875,0.5)
 				SwitchFrame.Size = UDim2.fromScale(0.15,0.6)
 
 				local SlidingFrame = Instance.new("Frame", SwitchFrame)
@@ -388,11 +390,21 @@ function lib:UI()
 				TabButton.BorderSizePixel = 0
 				TabButton.Size = UDim2.fromScale((0.25 / 0.3),0.6)
 				TabButton.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-				TabButton.Text = info.Text
-				TabButton.TextColor3 = Color3.fromRGB(255,255,255)
-				TabButton.TextSize = 14
+				TabButton.Text = ""
 				TabButton.Name = "TabButton"
 				TabButton.Position = UDim2.fromScale((0.05 / 0.3), 0.2)
+				
+				local Label = Instance.new("TextLabel", TabButton)
+				Label.BackgroundTransparency = 1
+				Label.BorderSizePixel = 0
+				Label.Size = UDim2.fromScale(1, 0.5)
+				Label.Position = UDim2.fromScale(0.5, 0.5)
+				Label.AnchorPoint = Vector2.new(0.5, 0.5)
+				Label.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+				Label.Text = info.Text
+				Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+				Label.Name = "Label"
+				Label.TextScaled = true
 
 				local UIStroke = Instance.new("UIStroke", TabButton)
 				UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
@@ -433,21 +445,23 @@ function lib:UI()
 			task.wait(0.1)
 
 			local Title = Instance.new("TextLabel", MainFrame)
-			Title.Size = UDim2.fromScale(1,0.2)
+			Title.Size = UDim2.fromScale(1,0.15)
+			Title.Position = UDim2.fromScale(0, 0.1)
+			Title.AnchorPoint = Vector2.new(0, 0.5)
 			Title.Text = info.Title
 			Title.BackgroundTransparency = 1
 			Title.TextColor3 = Color3.fromRGB(255,255,255)
-			Title.TextSize = 14
+			Title.TextScaled = true
 			Title.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.Medium, Enum.FontStyle.Normal)
 			Title.Name = "Title"
 
 			local LoadingLabel = Instance.new("TextLabel", MainFrame)
 			LoadingLabel.Position = UDim2.fromScale(0,0.2)
-			LoadingLabel.Size = UDim2.fromScale(1,0.05)
+			LoadingLabel.Size = UDim2.fromScale(1,0.075)
 			LoadingLabel.Text = "Loading..."
 			LoadingLabel.BackgroundTransparency = 1
 			LoadingLabel.TextColor3 = Color3.fromRGB(255,255,255)
-			LoadingLabel.TextSize = 14
+			LoadingLabel.TextScaled = true
 			LoadingLabel.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.Light, Enum.FontStyle.Normal)
 			LoadingLabel.Name = "LoadingLabel"
 
@@ -464,7 +478,7 @@ function lib:UI()
 				KeyBox.PlaceholderText = "Key"
 				KeyBox.Text = ""
 				KeyBox.TextColor3 = Color3.fromRGB(255,255,255)
-				KeyBox.TextSize = 14
+				KeyBox.TextScaled = true
 				KeyBox.Name = "Key"
 
 				KeyCheck = Instance.new("TextButton", MainFrame)
@@ -476,7 +490,7 @@ function lib:UI()
 				KeyCheck.Text = "Check"
 				KeyCheck.Name = "Check"
 				KeyCheck.TextColor3 = Color3.fromRGB(0,0,0)
-				KeyCheck.TextSize = 14
+				KeyCheck.TextScaled = true
 
 				local CheckImage = Instance.new("ImageLabel", KeyCheck)
 				CheckImage.Size = UDim2.fromScale(0.75,0.75)
@@ -574,12 +588,13 @@ function lib:UI()
 
 			local Title = Instance.new("TextLabel", TopBar)
 			Title.BackgroundTransparency = 1
-			Title.Position = UDim2.fromScale(0.05,0)
-			Title.Size = UDim2.fromScale(0.5,1)
+			Title.Position = UDim2.fromScale(0.05,0.5)
+			Title.Size = UDim2.fromScale(0.75,0.75)
+			Title.AnchorPoint = Vector2.new(0,0.5)
 			Title.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.Medium, Enum.FontStyle.Normal)
 			Title.Text = info.Title
 			Title.TextColor3 = Color3.fromRGB(255,255,255)
-			Title.TextSize = 14
+			Title.TextScaled = true
 			Title.TextXAlignment = Enum.TextXAlignment.Left
 			Title.Name = "Title"
 
